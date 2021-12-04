@@ -1,0 +1,52 @@
+<div class="main-content">
+
+    <div class="header-content">
+
+
+        <div class="add-detail-text">
+            Person Details
+            <span class="address-count">{{addressCount}}</span>
+        </div>
+
+
+        <a class="add-button" routerLink="address">
+            <img src="../../../assets/add-24px.svg" alt="">Add Person
+        </a>
+    </div>
+
+    <div class="table-main">
+        <table id="table-display" class="table">
+            <thead>
+                <tr>
+
+                    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+                    <th (click)="sort('firstName')">Full Name&nbsp;<i class="fa fa-sort"></i></th>
+                    <th>Address</th>
+                    <th (click)="sort('city')">City&nbsp;<i class="fa fa-sort"></i></th>
+                    <th (click)="sort('state')">State&nbsp;<i class="fa fa-sort"></i></th>
+                    <th (click)="sort('zip')">Zip&nbsp;<i class="fa fa-sort"></i></th>
+                    <th>Phone </th>
+                    <th (click)="sort('registerDate')">Created&nbsp;<i class="fa fa-sort"></i></th>
+                    <th (click)="sort('updateDate')">Updated&nbsp;<i class="fa fa-sort"></i></th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tr *ngFor="let address of addressDetails | orderBy: orderHeader : reverse">
+
+                <td> {{address.firstName }} </td>
+                <td>{{address.address}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.state}}</td>
+                <td>{{address.zip}}</td>
+                <td>{{address.phone}}</td>
+                <td>{{address.registerDate | date : 'dd MMMM yyyy'}}</td>
+                <td>{{address.updateDate | date : 'dd MMMM yyyy'}}</td>
+                <td>
+                    <img (click)="delete(address.contactId)" src="../../../assets/delete.svg" alt="delete">
+                    <img (click)="update(address)" src="../../../assets/edit.svg" alt="edit">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

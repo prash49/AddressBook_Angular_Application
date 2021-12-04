@@ -1,0 +1,98 @@
+<div class="form-content">
+    <form class="form" [formGroup]="addressBookFormGroup" (ngSubmit)="onSubmit()">
+        <div class="form-head">
+            <span>Person Address Form</span>
+
+            <img class="form-head-image" src="../assets/cancel.jpeg" alt="logo" routerLink="">
+
+
+        </div>
+
+        <div class="form-fields-container">
+            <div class="row-content">
+                <mat-label class="label">Full Name </mat-label>
+                <mat-form-field class="input-field-width" appearance="outline">
+                    <input matInput ngDefaultControl formControlName="firstName">
+                    <mat-error *ngIf="checkError('firstName', 'required')">Name is required</mat-error>
+                    <mat-error *ngIf="checkError('firstName', 'pattern')">Invalid name format</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="row-content">
+                <mat-label class="label">Phone Number</mat-label>
+                <mat-form-field class="input-field-width" appearance="outline">
+                    <input matInput ngDefaultControl formControlName="phone">
+                    <mat-error *ngIf="checkError('phone', 'required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="checkError('phone', 'pattern')">Invalid PhoneNumber format</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row-content">
+                <mat-label class="label">Address</mat-label>
+                <mat-form-field class="input-field-width" appearance="outline">
+                    <textarea matInput placeholder="" style="height:100px" ngDefaultControl formControlName="address"></textarea>
+                    <mat-error *ngIf="checkError('address', 'required')">Address is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row-content-address">
+
+                <div class="city-container subAddress">
+                    <mat-label class="label">City</mat-label>
+                    <mat-form-field appearance="outline">
+                        <mat-label class="label">Select City</mat-label>
+                        <mat-select ngDefaultControl formControlName="city">
+                            <mat-option value="Bengaluru">Anantapur</mat-option>
+                            <mat-option value="Bengaluru">Bengaluru</mat-option>
+                            <mat-option value="Mandya">Mandya</mat-option>
+                            <mat-option value="Mysore">Mysore</mat-option>
+                            <mat-option value="Chennai">Chennai</mat-option>
+                            <mat-option value="Chikkaballapura">Chikkaballapura</mat-option>
+                            <mat-option value="Hassan">Hassan</mat-option>
+                            <mat-option value="Hyderbad">Hyderabad</mat-option>
+                            <mat-option value="Vishaakpatanam">Vishaakpatanam</mat-option>
+                            <mat-option value="Delhi">Delhi</mat-option>
+                            <mat-option value="Pune">Pune</mat-option>
+                            <mat-option value="Raipur">Raipur</mat-option>
+                            <mat-option value="Maumbai">Mumbai</mat-option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+
+                <div class="state-container subAddress">
+                    <mat-label class="label">State</mat-label>
+                    <mat-form-field appearance="outline">
+                        <mat-label class="label">Select State</mat-label>
+                        <mat-select ngDefaultControl formControlName="state">
+                            <mat-option value="Karnataka">Karnataka</mat-option>
+                            <mat-option value="AndraPradesh">Andra Pradesh</mat-option>
+                            <mat-option value="TamilNadu">Tamil Nadu</mat-option>
+                            <mat-option value="Maharashtra">Maharashtra</mat-option>
+                            <mat-option value="MP">MadhyaPradesh</mat-option>
+                            <mat-option value="Telngana">Telangana</mat-option>
+                            <mat-option value="Rajasthan">Rajasthan</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="zip-container subAddress">
+                    <mat-label class="label">Zip Code</mat-label>
+                    <mat-form-field class="" appearance="outline">
+                        <input matInput ngDefaultControl formControlName="zip" placeholder="Pincode..">
+                        <mat-error *ngIf="checkError('zip', 'required')">Pincode is required</mat-error>
+                        <mat-error *ngIf="checkError('zip', 'pattern')">Invalid Pincode format</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="add-reset">
+                <div>
+                    <button [disabled]="!addressBookFormGroup.valid" mat-raised-button class="button-submit" type="submit">Submit</button>
+                    <button mat-raised-button class="button-reset" type="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
